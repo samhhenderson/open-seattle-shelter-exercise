@@ -105,3 +105,13 @@ a {
     color-scheme: dark;
   }
 }
+
+input,
+select {
+  width: 10rem;
+  height: 2rem;
+}
+
+form {
+  text-align: center;
+}
