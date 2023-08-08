@@ -4,71 +4,60 @@ import styles from '../page.module.css'
 import { useContext, useState } from 'react';
 
 import { appContext } from '../layout';
-import { Donation } from '../types';
+import { Distribution } from '../types';
 
+export default function Distribution() {
+  const { distributions, setDistributions, setInventory, inventory} = useContext(appContext);
 
-export default function Registration() {
-  const { donations, setDonations, setInventory, inventory} = useContext(appContext);
-  const [name, setName] = useState<string>('');
-  const [donationType, setDonationType] = useState<string>('clothing');
+  const [distributionType, setdistributionType] = useState<string>('clothing');
   const [quantity, setQuantity] = useState<number>(0);
   const [date, setDate] = useState<string>('');
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (!name || !quantity || !date) {
+    if (!quantity || !date) {
       alert('Please fill out all required fields.');
       return;
     }
 
-    if (donationType !== 'money' && donationType !== 'clothing' && donationType !== 'furniture') {
-      alert('Please select valid donation type.');
+    if (distributionType !== 'money' && distributionType !== 'clothing' && distributionType !== 'furniture') {
+      alert('Please select valid distribution type.');
       return;
     }
 
-    const newDonation: Donation = {
-      name,
-      type: donationType,
+    const newdistribution: Distribution = {
+      type: distributionType,
       quantity,
       date,
     }
 
-    setDonations((state: Donation[]) => [...state, newDonation]);
+    setDistributions((state: Distribution[]) => [...state, newdistribution]);
     setInventory((state) => {
       const newState = {...state};
-      newState[donationType] += quantity;
+      newState[distributionType] -= quantity;
       return newState;
       })
-    setName('');
-    setDonationType('clothing');
+    setdistributionType('clothing');
     setQuantity(0);
     setDate('');
 
-    console.log(donations)
+    console.log(distributions)
     console.log('INVENTORY', inventory)
   }
   
   return (
     <main className={styles.main}>
-      <h1>DONATION REGISTRATION</h1>
+      <h1>DISTRIBUTION</h1>
       <div className={styles.centerCont}>
         <div className={styles.formCont}>
           <form className={styles.grid} onSubmit={onSubmit}>
-            <label htmlFor="name">Donor Name *</label>
-            <input 
-              type="text" 
-              id="name" 
-              name="name" 
-              value={name} 
-              onChange={(e) => setName(e.target.value)} 
-            />
-            <label htmlFor="donationType">Type of Donation</label>
+            <label htmlFor="distributionType">Type of distribution</label>
             <select 
-              id="donationType" 
-              name="donation-type" 
-              value={donationType} 
-              onChange={(e) => setDonationType(e.target.value)}
+              id="distributionType" 
+              name="distribution-type" 
+              value={distributionType} 
+              onChange={(e) => setdistributionType(e.target.value)}
             >
               <option value="clothing">Clothing</option>
               <option value="furniture">Furniture</option>

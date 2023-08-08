@@ -7,6 +7,19 @@
   min-height: 100vh;
 }
 
+.centerCont {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.formCont {
+  border: .05rem solid gray;
+  border-radius: .5rem;
+  padding: 1rem;
+}
+
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -16,5 +29,5 @@
 
 .submit {
   grid-column: span 2;
-  align-self: center;
+  justify-self: center;
 }
