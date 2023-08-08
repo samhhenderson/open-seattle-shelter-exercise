@@ -2,6 +2,7 @@
 
 import styles from '../page.module.css'
 import { useContext, useState } from 'react';
+import Link from 'next/link';
 
 import { appContext } from '../layout';
 import { Distribution } from '../types';
@@ -48,7 +49,7 @@ export default function Distribution() {
   
   return (
     <main className={styles.main}>
-      <h1>DISTRIBUTION</h1>
+      <h1>DONATION DISTRIBUTION</h1>
       <div className={styles.centerCont}>
         <div className={styles.formCont}>
           <form className={styles.grid} onSubmit={onSubmit}>
@@ -83,6 +84,11 @@ export default function Distribution() {
           </form>
         </div>
       </div>
+      <Link
+        className={styles.link}
+        href={{pathname: '/'}}>
+        Home
+      </Link>
     </main>
   )
 }

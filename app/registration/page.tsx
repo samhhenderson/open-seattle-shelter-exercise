@@ -2,6 +2,7 @@
 
 import styles from '../page.module.css'
 import { useContext, useState } from 'react';
+import Link from 'next/link';
 
 import { appContext } from '../layout';
 import { Donation } from '../types';
@@ -94,6 +95,11 @@ export default function Registration() {
           </form>
         </div>
       </div>
+      <Link
+        className={styles.link}
+        href={{pathname: '/'}}>
+        Home
+      </Link>
     </main>
   )
 }

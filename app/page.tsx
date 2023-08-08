@@ -8,14 +8,24 @@ export default function Home() {
   return (
 
     <main className={styles.main}>
-      <Link
-        href={{pathname: '/registration'}}>
-        Registration
-      </Link>
-      <Link
-        href={{pathname: '/distribution'}}>
-        Distribution
-      </Link>
+      <h1>HOME</h1>
+      <div className={styles.centerCont}>
+        <Link
+          className={styles.link}
+          href={{pathname: '/registration'}}>
+          Registration
+        </Link>
+        <Link
+          className={styles.link}
+          href={{pathname: '/distribution'}}>
+          Distribution
+        </Link>
+        <Link
+          className={styles.link}
+          href={{pathname: '/reports'}}>
+          Reports
+        </Link>
+      </div>
     </main>
 
   )
