@@ -33,6 +33,7 @@
   justify-self: center;
   border-radius: .5rem;
   background-color: rgb(220, 220, 220);
+  border: .05rem solid gray;
 }
 
 .link {
